@@ -17,3 +17,43 @@
 .cream {
     background-color: #DDD5D0;
 }
+
+.blue {
+    color: #5B7C98;
+}
+
+.content{
+    width: 550px;
+}
+
+.content p{
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 1px;
+}
+
+#about img{
+    height: auto;
+    width: 300px;
+    border-radius: 70%;
+}
+
+.more {
+    display: none;
+}
+
+.about {
+    width: 1130px;
+    max-width: 95%;
+    
+    /* align-items: center;
+    justify-content: space-around; */
+    /* padding-bottom: 40px;
+    padding-top: 40px; */
+    
+}
+
+.container h3{
+    color: #48392A;
+    font-size: 80px;
+}

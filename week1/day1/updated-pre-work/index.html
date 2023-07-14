@@ -23,11 +23,57 @@
 <body>
     <div class="container-fluid">
         <div class="text-center cream text-white px-5">
-            <h3>Hi, My Name is Julia</h3>
-            <button class="btn btn-outline-light mb-3">Click to learn about me!</button>
+            <h3 class = "pl-400 mb-100">Hi, My Name is Julia</h3>
+            <button id = "btn" class="btn btn-outline-light mb-3">Click to learn about me!</button>
         </div>
-        
+        <div class = "more">
+            <div id = "about" class = "d-flex py-4 justify-content-center">
+                <img src = "images/IMG_0579.jpeg" class = "img-thumbnail pl-5">
+                    <div class = "content px-5">
+                        <h2 class = "blue mb-4">About Me</h2>
+                        <p >I am a rising junior at Princton University studying computer science. I'm from Los Angeles, CA but my family is currently bicoastal and also lives in Massachussets. </p>
+                        <p >I have always loved tech and coding but only seriously considered it as a career since going to college. I'm super excited for this summer with iXperience and I can't wait to meet everyone!</p>
+                        <p > Some fun things about me: I love reading, listening to music, and watching k-dramas!</p>
+                        <p >Github: julia-hines</p>
+                    </div>
+            </div>
 
+                    <div class = "info pt-4">
+                        <h5>Let me learn about you!</h5>
+                        <form>
+                            <div class="form">
+                                <label for="text">Let's connect on LinkedIn!</label>
+                                <input type="text" id="input" />
+                                <p>What year are you?</p>
+                                <input type="radio" id="undergrad" name="classyear" />
+                                <label for="undergrad">Undergrad student</label>
+                                <input type="radio" id="grad" name="classyear" />
+                                <label for="grad">Grad Student</label>
+                                <input type="radio" id="otheryear" name="classyear"/>
+                                <label for="otheryear">Other</label>
+                                <p>What are your hobbies?</p>
+                                <input type="checkbox" id="tv" name="hobby" value="Bike" />
+                                <label for="tv">Watching TV</label>
+                                <input type="checkbox" id="sports" name="hobby" value="Bike" />
+                                <label for="sports">Sports</label>
+                                <input type="checkbox" id="reading" name="hobby" value="Bike" />
+                                <label for="reading">Reading</label>
+                                <input type="checkbox" id="art" name="hobby" value="Bike" />
+                                <label for="art">Art</label>
+                                <input type="checkbox" id="music" name="hobby" value="Bike" />
+                                <label for="music">Music</label>
+                                <input type="checkbox" id="hiking" name="hobby" value="Bike" />
+                                <label for="hiking">Hiking/Outdoors</label>
+                                <input type="checkbox" id="otherhobby" name="hobby" value="Bike" />
+                                <label for="otherhobby">Other</label>
+                                <div class="form-submit">
+                                    <input type="submit" value="Submit!">
+                                </div>
+                            
+                            </div>
+                        </form>
+                    </div>
+        </div>         
     </div>
     
 </body>
