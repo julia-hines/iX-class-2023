@@ -17,6 +17,6 @@ function generateNumber() {
 }
 
 function resetForm(){
-    guessedNumber.value = '';
-    number.value = '';
+    guessedNumber = '';
+    number = '';
 }
