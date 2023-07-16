@@ -46,9 +46,11 @@ class UI {
     
         tdTask.innerHTML = task.title;
     
-        const actionButtons = this.createActionButtons();
+        const actionButtons = this.createActionButtons(task);
+        const completeRadio = this.createRadio();
         const tdComplete = document.createElement('td');
         const tdActions = document.createElement('td');
+        tdComplete.appendChild(completeRadio[0]);
         tdActions.appendChild(actionButtons[0]);
     
         tr.appendChild(tdTask);
@@ -58,14 +60,24 @@ class UI {
         return tr;
     }
 
-    createActionButtons() {
+    // deleteTaskTableRow(input_task){
+        
+    // }
+
+    createRadio(){
+        const radioButton = document.createElement('input');
+        radioButton.setAttribute('type', 'radio');
+        
+    }
+
+    createActionButtons(input_task) {
         const deleteButton = document.createElement('button');
         //const editButton = document.createElement('button');
     
         deleteButton.setAttribute('class', 'btn btn-danger btn-sm me-1');
         deleteButton.innerHTML = 'Delete';
         deleteButton.addEventListener('click', () => {
-          console.log('Delete was clicked');
+            console.log('Delete was clicked');
         });
     
         // editButton.setAttribute('class', 'btn btn-warning btn-sm ms-1');
