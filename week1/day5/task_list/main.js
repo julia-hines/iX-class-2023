@@ -2,6 +2,10 @@ class Task {
     constructor(task) {
         this.task = task;
     }
+
+    static fromJSON(json){
+        return new Task(json.task);
+    }
 }
 
 class UI {
@@ -11,6 +15,7 @@ class UI {
         this.tableBody = document.getElementById('table-body');
         this.form.addEventListener('submit', (e) => this.onFormSubmit(e));
         this.tasks = [];
+        this.loadTasksToLocalStorage();
         this.renderTaskTable();
     }
 
@@ -23,6 +28,7 @@ class UI {
     
         const input_task = new Task(this.task.value);
         this.tasks.push(input_task);
+        this.saveTasksToLocalStorage();
         this.renderTaskTable();
     
         this.task.value = '';
@@ -44,14 +50,15 @@ class UI {
     
         const tdTask = document.createElement('td');
     
-        tdTask.innerHTML = task.title;
+        tdTask.innerHTML = task.task;
     
         const actionButtons = this.createActionButtons(task);
         const completeRadio = this.createRadio();
         const tdComplete = document.createElement('td');
         const tdActions = document.createElement('td');
-        tdComplete.appendChild(completeRadio[0]);
+        tdComplete.appendChild(completeRadio);
         tdActions.appendChild(actionButtons[0]);
+        tdActions.appendChild(actionButtons[1]);
     
         tr.appendChild(tdTask);
         tr.appendChild(tdComplete);
@@ -60,35 +67,67 @@ class UI {
         return tr;
     }
 
-    // deleteTaskTableRow(input_task){
-        
-    // }
-
     createRadio(){
         const radioButton = document.createElement('input');
         radioButton.setAttribute('type', 'radio');
+        return radioButton;
         
     }
 
     createActionButtons(input_task) {
         const deleteButton = document.createElement('button');
-        //const editButton = document.createElement('button');
+        const editButton = document.createElement('button');
     
         deleteButton.setAttribute('class', 'btn btn-danger btn-sm me-1');
         deleteButton.innerHTML = 'Delete';
         deleteButton.addEventListener('click', () => {
             console.log('Delete was clicked');
+            this.onDeleteTaskClicked(input_task);
         });
     
-        // editButton.setAttribute('class', 'btn btn-warning btn-sm ms-1');
-        // editButton.innerHTML = 'Edit';
-        // editButton.addEventListener('click', () => {
-        //   console.log('Edit was clicked');
-        // });
+        editButton.setAttribute('class', 'btn btn-warning btn-sm ms-1');
+        editButton.innerHTML = 'Edit';
+        editButton.addEventListener('click', () => {
+          this.onEditTaskClicked(input_task);
+        });
     
-        return [deleteButton];
+        return [deleteButton, editButton];
+      }
+
+      saveTasksToLocalStorage() {
+        const json = JSON.stringify(this.tasks);
+        localStorage.setItem('tasks', json);
+      }
+
+
+      loadTasksToLocalStorage() {
+        const json = localStorage.getItem('books');
+        if(json){
+            const taskArr = JSON.parse(json);
+            this.tasks = taskArr.map((x) => Task.fromJSON(x));
+        }
+      }
+
+      onDeleteTaskClicked(task) {
+        this.filterTaskArray(task);
+        this.saveTasksToLocalStorage();
+        this.renderTaskTable();
+      }
+
+      onEditTaskClicked(task) {
+        this.filterTaskArray(task);
+        this.task.value = task.task;
+        this.saveTasksToLocalStorage();
+        this.renderTaskTable();
+      }
+
+      filterTaskArray(task){
+        this.tasks = this.tasks.filter((x) =>{
+            return task.task != x.task;
+        });
       }
 }
+
 
 const ui = new UI();
 
