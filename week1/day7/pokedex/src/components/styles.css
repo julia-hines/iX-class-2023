@@ -67,12 +67,13 @@ body {
     justify-content: space-around;
     align-items: center;
     margin-top: 1rem;
+    padding: 20px;
 }
 
 .abilities .group{
     background-color: #b74555;
     color: white;
-    padding: 0.5rem;
+    padding: 20px;
     font-size: 12px;
     border-radius: 8px;
 }
