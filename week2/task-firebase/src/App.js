@@ -59,9 +59,9 @@ function App() {
   return (
     <div className="container mt-5">
       <div className="card card-body text-center">
-        <h1>Task List</h1>
+        <h1>Task Manager</h1>
         <hr />
-        <p>Our Task List</p>
+        <p>Enter your to-do list here</p>
 
         <TaskInput onTaskCreate={onTaskCreate} />
         <TaskTable
